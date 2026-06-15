@@ -20,6 +20,7 @@ export function InquiriesTable({ inquiries }: InquiriesTableProps) {
             <tr>
               <th>Inquiry ID</th>
               <th>Company</th>
+              <th>Product</th>
               <th>Contact Person</th>
               <th>Email</th>
               <th>Business Type</th>
@@ -31,7 +32,7 @@ export function InquiriesTable({ inquiries }: InquiriesTableProps) {
           <tbody>
             {inquiries.length === 0 ? (
               <tr>
-                <td colSpan={8} className="text-center text-muted py-5">
+                <td colSpan={9} className="text-center text-muted py-5">
                   No inquiries yet. Share the public form at /inquiry
                 </td>
               </tr>
@@ -42,6 +43,12 @@ export function InquiriesTable({ inquiries }: InquiriesTableProps) {
                     <strong>{inquiry.inquiryId}</strong>
                   </td>
                   <td>{inquiry.companyName || '-'}</td>
+                  <td>
+                    <div>{inquiry.productName || '-'}</div>
+                    {inquiry.productCategory ? (
+                      <small className="text-muted">{inquiry.productCategory}</small>
+                    ) : null}
+                  </td>
                   <td>{inquiry.contactPersonName || '-'}</td>
                   <td>{inquiry.email || '-'}</td>
                   <td>{inquiry.businessType || '-'}</td>

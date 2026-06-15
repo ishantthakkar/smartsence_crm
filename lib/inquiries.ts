@@ -13,6 +13,17 @@ export interface InquiryRecord {
   currentSourceCountry: string;
   currentSellMarketCountry: string;
   preferredSellMarketCountry: string;
+  productName: string;
+  productCategory: string;
+  productLink: string;
+  productDescription: string;
+  productSpecifications: string;
+  trialSampleQuantity: string;
+  monthlyYearlyQuantity: string;
+  productBrandingRequired: boolean;
+  certificationsNeeded: string[];
+  certificationsOther: string;
+  shipmentPreferences: string;
   createdAt: string;
 }
 
