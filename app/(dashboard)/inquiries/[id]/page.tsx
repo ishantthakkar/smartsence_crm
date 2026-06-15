@@ -111,6 +111,61 @@ export default async function InquiryDetailPage({ params }: InquiryDetailPagePro
                   )}
                 </div>
               </div>
+
+              <div className="card">
+                <div className="card-header">
+                  <h3 className="card-title">Product Details</h3>
+                </div>
+                <div className="card-body">
+                  <p className="mb-1">
+                    <strong>Product Name:</strong> {inquiry.productName || '-'}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Product Category:</strong> {inquiry.productCategory || '-'}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Product Link:</strong>{' '}
+                    {inquiry.productLink ? (
+                      <a href={inquiry.productLink} target="_blank" rel="noreferrer">
+                        {inquiry.productLink}
+                      </a>
+                    ) : (
+                      '-'
+                    )}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Description:</strong> {inquiry.productDescription || '-'}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Specifications:</strong> {inquiry.productSpecifications || '-'}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Trial / Sample Quantity:</strong>{' '}
+                    {inquiry.trialSampleQuantity || '-'}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Monthly / Yearly Quantity:</strong>{' '}
+                    {inquiry.monthlyYearlyQuantity || '-'}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Product Branding Required:</strong>{' '}
+                    {inquiry.productBrandingRequired ? 'Yes' : 'No'}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Certifications Needed:</strong>{' '}
+                    {inquiry.certificationsNeeded?.length
+                      ? inquiry.certificationsNeeded.join(', ')
+                      : '-'}
+                    {inquiry.certificationsOther
+                      ? ` (${inquiry.certificationsOther})`
+                      : ''}
+                  </p>
+                  <p className="mb-0">
+                    <strong>Shipment Preferences:</strong>{' '}
+                    {inquiry.shipmentPreferences || '-'}
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="col-md-4">
