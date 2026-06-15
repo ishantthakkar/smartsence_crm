@@ -2,6 +2,8 @@
 
 const BACKEND_URL = process.env.API_URL ?? 'http://127.0.0.1:5000';
 
+const CERTIFICATION_OPTIONS = ['CE', 'RoHS', 'BIS', 'FCC', 'FDA', 'ISO', 'IEC', 'Other'];
+
 export interface SubmitInquiryResult {
   success: boolean;
   inquiryId?: string;
@@ -10,6 +12,11 @@ export interface SubmitInquiryResult {
 
 export async function submitInquiry(formData: FormData): Promise<SubmitInquiryResult> {
   const hasImportExperience = formData.get('hasImportExperience') === 'yes';
+  const productBrandingRequired = formData.get('productBrandingRequired') === 'yes';
+
+  const certificationsNeeded = CERTIFICATION_OPTIONS.filter(
+    (cert) => formData.get(`cert_${cert}`) === 'on',
+  );
 
   try {
     const response = await fetch(`${BACKEND_URL}/api/inquiries`, {
@@ -28,6 +35,17 @@ export async function submitInquiry(formData: FormData): Promise<SubmitInquiryRe
         currentSourceCountry: hasImportExperience ? formData.get('currentSourceCountry') : '',
         currentSellMarketCountry: hasImportExperience ? formData.get('currentSellMarketCountry') : '',
         preferredSellMarketCountry: hasImportExperience ? '' : formData.get('preferredSellMarketCountry'),
+        productName: formData.get('productName'),
+        productCategory: formData.get('productCategory'),
+        productLink: formData.get('productLink'),
+        productDescription: formData.get('productDescription'),
+        productSpecifications: formData.get('productSpecifications'),
+        trialSampleQuantity: formData.get('trialSampleQuantity'),
+        monthlyYearlyQuantity: formData.get('monthlyYearlyQuantity'),
+        productBrandingRequired,
+        certificationsNeeded,
+        certificationsOther: formData.get('certificationsOther'),
+        shipmentPreferences: formData.get('shipmentPreferences'),
       }),
     });
 

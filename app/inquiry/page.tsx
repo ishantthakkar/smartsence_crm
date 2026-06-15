@@ -12,8 +12,8 @@ export default function PublicInquiryPage() {
               </div>
               <div className="card-body">
                 <p className="text-muted mb-4">
-                  Share your company and import details. Our team will use this information for
-                  CRM follow-up and repeat business support.
+                  Share your company and product details in two steps. Our team will use this
+                  information for CRM follow-up and repeat business support.
                 </p>
                 <p className="text-muted small mb-4">
                   <strong>Inquiry ID</strong> will be auto-generated after submission.
